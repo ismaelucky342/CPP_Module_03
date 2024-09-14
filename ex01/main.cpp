@@ -1,27 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/14 23:16:39 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/14 23:16:40 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-int main(void){
+int	main()
+{
+	ClapTrap joe("Joe");
+	ClapTrap foe;
+	ScavTrap toe("Toe");
 
-	ScavTrap	test2("new_name");
-	ScavTrap	test;
+	foe = ClapTrap("Foe");
 
-	test = test2;
-	// ClapTrap	obj1("test1");
-	// ClapTrap	obj2(obj1);
-	// ClapTrap	obj3;
+	joe.attack("Foe");
+	foe.takeDamage(2);
 
-	// obj3 = obj1;
-
-	// std::cout << obj1.get_name() << std::endl;
-	// std::cout << obj1.get_energy() << std::endl;
-	// std::cout << obj2.get_name() << std::endl;
-	// std::cout << obj2.get_energy() << std::endl;
-	// std::cout << obj3.get_name() << std::endl;
-	// std::cout << obj3.get_energy() << std::endl;
-
-	// obj1.attack(obj3.get_name());
-	test.attack("jajaja");
-	test.attack("jajaja");
-	test.attack("jajaja");
-	return 0;
+	foe.beRepaired(10);
+	foe.attack("Toe");
+	
+	toe.takeDamage(2);
+	toe.guardGate();
 }

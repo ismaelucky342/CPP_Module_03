@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/14 23:14:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/14 23:14:03 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/14 23:23:02 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/14 23:25:44 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
-int	main()
+#include <string>
+#include <iomanip>
+#include <iostream>
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+
+class DiamondTrap : public FragTrap, public ScavTrap
 {
-	ClapTrap joe("Joe");
-	ClapTrap foe("Foe");
-	ClapTrap toe;
+	private:
+		std::string	_name;
+	public:
+		DiamondTrap(std::string name);
+		DiamondTrap(const DiamondTrap &ref);				
+		~DiamondTrap();								
 
-	toe = ClapTrap("Toe");
+		void	whoAmI();
+};
 
-	joe.attack("Foe");
-	foe.takeDamage(2);
 
-	foe.beRepaired(10);
-
-	toe.attack("Joe");
-	joe.takeDamage(4);
-
-	
-	joe.attack("Toe");
-	toe.takeDamage(2);
-
-	foe.attack("Joe");
-	joe.takeDamage(3);
-}
+#endif

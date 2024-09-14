@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/14 23:14:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/14 23:14:03 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/14 23:19:00 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/14 23:25:12 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
+#include <string>
+#include <iomanip>
+#include <iostream>
 #include "ClapTrap.hpp"
 
-int	main()
+class ScavTrap : public ClapTrap
 {
-	ClapTrap joe("Joe");
-	ClapTrap foe("Foe");
-	ClapTrap toe;
+	private:
+	public:
+		ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap &ref);				
+		ScavTrap &operator=(const ScavTrap &ref);		
+		~ScavTrap();
 
-	toe = ClapTrap("Toe");
+		void	attack(const std::string& target);
+		void	guardGate();
+};
 
-	joe.attack("Foe");
-	foe.takeDamage(2);
 
-	foe.beRepaired(10);
-
-	toe.attack("Joe");
-	joe.takeDamage(4);
-
-	
-	joe.attack("Toe");
-	toe.takeDamage(2);
-
-	foe.attack("Joe");
-	joe.takeDamage(3);
-}
+#endif

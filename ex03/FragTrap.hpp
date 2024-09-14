@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/14 23:14:02 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/14 23:14:03 by ismherna         ###   ########.fr       */
+/*   Created: 2024/09/14 23:18:37 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/14 23:24:37 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
+
+#include <string>
+#include <iomanip>
+#include <iostream>
 #include "ClapTrap.hpp"
 
-int	main()
+class FragTrap : virtual public ClapTrap
 {
-	ClapTrap joe("Joe");
-	ClapTrap foe("Foe");
-	ClapTrap toe;
+	private:
+	public:
+		FragTrap();								
+		FragTrap(std::string name);
+		FragTrap(const FragTrap &ref);				
+		FragTrap &operator=(const FragTrap &ref);		
+		~FragTrap();								
 
-	toe = ClapTrap("Toe");
+		void	highFivesGuys(void);
+};
 
-	joe.attack("Foe");
-	foe.takeDamage(2);
 
-	foe.beRepaired(10);
-
-	toe.attack("Joe");
-	joe.takeDamage(4);
-
-	
-	joe.attack("Toe");
-	toe.takeDamage(2);
-
-	foe.attack("Joe");
-	joe.takeDamage(3);
-}
+#endif

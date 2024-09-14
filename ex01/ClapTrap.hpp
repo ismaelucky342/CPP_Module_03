@@ -1,35 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/14 23:14:50 by ismherna          #+#    #+#             */
+/*   Updated: 2024/09/14 23:15:02 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
-# include <string>
-# include <iostream>
+#define CLAPTRAP_HPP
 
-class ClapTrap{
+#include <string>
+#include <iomanip>
+#include <iostream>
 
-	private:
-		std::string		_name;
-		unsigned int	_point_hit;
-		unsigned int	_point_energy;
-		unsigned int	_attack_damage;
-
+class ClapTrap
+{
+	protected:
+		std::string	_name;
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
 	public:
-						ClapTrap(void);
-						ClapTrap(std::string name);
-						~ClapTrap(void);
-						ClapTrap(const ClapTrap &obj);
-		ClapTrap&		operator=(const ClapTrap &obj);
-		void			attack(const std::string& target);
-		void			takeDamage(unsigned int amount);
-		void			beRepaired(unsigned int amount);
-		std::string		get_name(void) const;
-		unsigned int 	get_hit(void) const;
-		unsigned int	get_energy(void) const;
-		unsigned int	get_damage(void) const;
-		void			set_damage(unsigned int new_dam);
-		void			change_name(std::string new_name);
-		void			change_hit(unsigned int	new_hit);
-		void			change_energy(unsigned int new_energy);
-		void			change_damage(unsigned int new_damage);
+		ClapTrap();								
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &ref);				
+		ClapTrap &operator=(const ClapTrap &ref);		
+		~ClapTrap();								
+
+		void	attack(const std::string& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 };
+
 
 #endif
