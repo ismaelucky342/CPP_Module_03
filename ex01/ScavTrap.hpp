@@ -1,25 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/07 16:37:38 by ismherna          #+#    #+#             */
+/*   Updated: 2025/05/07 16:38:26 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-#include <string>
-#include <iomanip>
-#include <iostream>
-#include "ClapTrap.hpp"
+/*===============================INCLUDES===================================*/
+
+# include <iostream>
+# include <string>
+# include "ClapTrap.hpp"
+
+/*====================================CLASS=================================*/
 
 class ScavTrap : public ClapTrap
 {
-	private:
 	public:
-		ScavTrap();								
+		ScavTrap();
 		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap &ref);				
-		ScavTrap &operator=(const ScavTrap &ref);		
 		~ScavTrap();
+		ScavTrap(ScavTrap const&);
+		void		display(std::ostream& stream) const;
+		void 		attack(std::string const& target);
+		void		guardGate();
 
-		void	attack(const std::string& target);
-		void	guardGate();
+	protected:
 };
 
+std::ostream&	operator<<(std::ostream& stream, ScavTrap const& cl);
 
 #endif

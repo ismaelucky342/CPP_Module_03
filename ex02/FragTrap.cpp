@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:18:05 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/14 23:18:06 by ismherna         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:58:56 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ FragTrap::FragTrap()
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 
-	std::cout << "FragTrap: Empty constructor called" << std::endl;
+	std::cout << WHITE "FragTrap: Empty constructor called" RESET << std::endl;
 }
 
 FragTrap::FragTrap(std::string name)
@@ -29,18 +29,18 @@ FragTrap::FragTrap(std::string name)
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 
-	std::cout << "FragTrap: Default constructor called" << std::endl;
+	std::cout << GREEN "FragTrap: Default constructor called" RESET << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &ref)
 {
-	std::cout << "FragTrap: Copy constructor called" << std::endl;
+	std::cout << MAGENTA "FragTrap: Copy constructor called" RESET << std::endl;
 	*this = ref;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &ref)
 {
-	std::cout << "FragTrap: Copy assignment operator called" << std::endl;
+	std::cout << BLUE "FragTrap: Copy assignment operator called" RESET << std::endl;
 	if (this != &ref)
 	{
 		_name = ref._name;
@@ -53,12 +53,12 @@ FragTrap &FragTrap::operator=(const FragTrap &ref)
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap: Destructor called" << std::endl;
+	std::cout << RED "FragTrap: Destructor called" RESET << std::endl;
 }
 
 void	FragTrap::highFivesGuys(void)
 {
-	std::cout	<< "FragTrap " << _name
-				<< " says \"High five!\""
+	std::cout	<< BRIGHT_GREEN "FragTrap " << _name
+				<< " says \"High five!\"" RESET
 				<< std::endl;
 }

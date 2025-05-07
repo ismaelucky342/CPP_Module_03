@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:16:21 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/14 23:18:49 by ismherna         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:00:30 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 
-	std::cout << "ScavTrap: Empty constructor called" << std::endl;
+	std::cout << WHITE "ScavTrap: Empty constructor called" RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name)
@@ -29,19 +29,19 @@ ScavTrap::ScavTrap(std::string name)
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 
-	std::cout << "ScavTrap: Default constructor called" << std::endl;
+	std::cout << GREEN "ScavTrap: Default constructor called" RESET << std::endl;
 
 }
 
 ScavTrap::ScavTrap(const ScavTrap &ref)
 {
-	std::cout << "ScavTrap: Copy constructor called" << std::endl;
+	std::cout << BLUE "ScavTrap: Copy constructor called" RESET << std::endl;
 	*this = ref;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &ref)
 {
-	std::cout << "ScavTrap: Copy assignment operator called" << std::endl;
+	std::cout << YELLOW "ScavTrap: Copy assignment operator called" RESET << std::endl;
 	if (this != &ref)
 	{
 		_name = ref._name;
@@ -54,7 +54,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &ref)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap: Destructor called" << std::endl;
+	std::cout << RED "ScavTrap: Destructor called" RESET << std::endl;
 }
 
 
@@ -62,16 +62,16 @@ void	ScavTrap::attack(const std::string &target)
 {
 	if (_energyPoints == 0)
 	{
-		std::cout	<< "ScavTrap " << _name
-					<< " cannot attack!"
+		std::cout	<< BRIGHT_RED "ScavTrap " << _name
+					<< " cannot attack!" RESET
 					<< std::endl;
 	}
 	else if (_energyPoints >= 1)
 	{
-		std::cout	<< "ScavTrap " << _name
+		std::cout	<< BRIGHT_GREEN "ScavTrap " << _name
 					<< " attacks " << target
 					<< ", causing " << _attackDamage
-					<< " points of damage!"
+					<< " points of damage!" RESET
 					<< std::endl;
 		_energyPoints -= 1;
 	}
@@ -79,7 +79,7 @@ void	ScavTrap::attack(const std::string &target)
 
 void	ScavTrap::guardGate()
 {
-	std::cout	<< "ScavTrap " << _name
-				<< " is now in Gate keeper mode."
+	std::cout	<< YELLOW "ScavTrap " << _name
+				<< " is now in Gate keeper mode." RESET
 				<< std::endl;
 }

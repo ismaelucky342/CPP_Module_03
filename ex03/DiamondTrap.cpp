@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 23:25:28 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/14 23:25:29 by ismherna         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:11:46 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name), Sca
 	ScavTrap::_energyPoints = 50;
 	FragTrap::_attackDamage = 30;
 	
-	std::cout << "DiamondTrap: Default constructor called" << std::endl;
+	std::cout << WHITE "DiamondTrap: Default constructor called" RESET << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &ref)
 {
-	std::cout << "DiamondTrap: Copy constructor called" << std::endl;
+	std::cout << GREEN "DiamondTrap: Copy constructor called" RESET << std::endl;
 	*this = ref;
 }
 
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << "DiamondTrap: Destructor called" << std::endl;
+	std::cout << RED "DiamondTrap: Destructor called" RESET<< std::endl;
 }
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout	<< "My DiamondTrap name is " << _name
-				<< " and my ClapTrap name is " << ClapTrap::_name
+	std::cout	<< CYAN "My DiamondTrap name is " << _name
+				<< " and my ClapTrap name is " RESET << ClapTrap::_name
 				<< std::endl;
 }

@@ -1,119 +1,104 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/07 16:35:32 by ismherna          #+#    #+#             */
+/*   Updated: 2025/05/07 16:53:55 by ismherna         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void): _point_hit(10), _point_energy(10), _attack_damage(0){
-
-	_name = "UnSet";
-	std::cout << "Constructors(void) called!!" << " base class: " << _name << std::endl;
+ClapTrap::ClapTrap():
+	_name(""), _hitPoints(10), _maxHitPoints(10), _energyPoints(10), _maxEnergyPoints(10), _attackDamage(0)
+{
+	std::cout << GREEN "Claptrap Default constructor called" RESET << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name): _name(name), _point_hit(10), _point_energy(10), _attack_damage(0){
 
-	std::cout << "Constructor(string) called!!" << " base class: " << _name << std::endl;
+ClapTrap::ClapTrap(std::string name):
+	_name(name), _hitPoints(10), _maxHitPoints(10), _energyPoints(10), _maxEnergyPoints(10), _attackDamage(0)
+{
+	std::cout << BLUE "ClapTrap first Param constructor called" RESET << std::endl;
 }
 
-ClapTrap::~ClapTrap(void){
-
-	std::cout << "Destructor called!!" << " base class: " << _name << std::endl;
+ClapTrap::ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackDamage) :
+	_name(name), _hitPoints(hitPoints), _maxHitPoints(hitPoints), _energyPoints(energyPoints), _maxEnergyPoints(energyPoints), _attackDamage(attackDamage)
+{
+	std::cout << CYAN "ClapTrap Second Param constructor called" RESET << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &obj){
-
-	std::cout << "Constructor(ClapTrap&) called!!" << " base class: " << _name << std::endl;
-	this->_name = obj.get_name();
-	this->_point_energy = obj.get_energy();
-	this->_point_hit = obj.get_hit();
-	this->_attack_damage = this->get_damage();
+ClapTrap::~ClapTrap()
+{
+	std::cout << RED "ClapTrap Destructor called" RESET	 << std::endl;
 }
 
-std::string		ClapTrap::get_name(void) const{
-
-	return this->_name;
+ClapTrap::ClapTrap(ClapTrap const& cl)
+{
+	std::cout << MAGENTA "ClapTrap Copy constructor called" RESET << std::endl;
+	operator=(cl);
 }
 
-unsigned int 	ClapTrap::get_hit(void) const{
-
-	return this->_point_hit;
+ClapTrap&	ClapTrap::operator=(ClapTrap const& cl)
+{
+	std::cout << YELLOW "ClapTrap Operator = called" RESET << std::endl;
+	_name = cl._name;
+	_hitPoints = cl._hitPoints;
+	_maxHitPoints = cl. _maxHitPoints;
+	_energyPoints = cl._energyPoints;
+	_maxEnergyPoints = cl._maxEnergyPoints;
+	_attackDamage = cl._attackDamage;
+	return (*this);
 }
 
-unsigned int	ClapTrap::get_energy(void) const{
-
-	return this->_point_energy;
+void		ClapTrap::display(std::ostream& stream) const
+{
+	stream << BRIGHT_GREEN "ClapTrap " << _name << " has " << _hitPoints << " hit points, " << _energyPoints << " energy points and " << _attackDamage << " attack dammage.";
 }
 
-unsigned int	ClapTrap::get_damage(void) const{
-
-	return this->_attack_damage;
+std::ostream&	operator<<(std::ostream& stream, ClapTrap const& cl)
+{
+	cl.display(stream);
+	return (stream);
 }
 
-void			ClapTrap::set_damage(unsigned int new_dam){
-
-	this->_attack_damage = new_dam;
-}
-
-ClapTrap&	ClapTrap::operator=(const ClapTrap &obj){
-
-	if (this != &obj){
-
-		this->_name = obj.get_name();
-		this->_point_energy = obj.get_energy();
-		this->_point_hit = obj.get_hit();
-		this->_attack_damage = this->get_damage();
-	}
-	return *this;
-}
-
-void		ClapTrap::attack(const std::string& target){
-
-	if (this->_point_energy > 0){
-
-		this->_point_energy --;
-		std::cout << "ClapTrap " << this->_name << " attacks " << target
-			  << ", causing " << this->_attack_damage << " points of damage!"
-			  << std::endl;
-	}
-	else{
-
-		std::cout << "Do not have enough energy to attack!!!" << std::endl;
-	}
-}
-
-void		ClapTrap::takeDamage(unsigned int amount){
-
-	if (amount <= _point_hit){
-		this->_point_hit -= amount;
-		std::cout << _name << " take " << amount << " points of damage!!\n";
+void 		ClapTrap::attack(std::string const& target)
+{
+	if (_energyPoints >= 5)
+	{
+		std::cout << RED "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage! " RESET << std::endl;
+		_energyPoints -= 5;
 	}
 	else
-		this->_point_hit = 0;
+		std::cout << BRIGHT_RED "Not enough enery points" RESET << std::endl;
 }
 
-void		ClapTrap::beRepaired(unsigned int amount){
+void 		ClapTrap::takeDamage(unsigned int amount)
+{
+	std::cout << BRIGHT_GREEN "ClapTrap " << _name << " takes " << amount << " damage." RESET << std::endl;
+	if (amount > _hitPoints)
+		_hitPoints = 0;
+	else
+		_hitPoints -= amount;
 
-	if (this->_point_energy > 0){
-
-		std::cout << _name << " repair itself " << amount << " points of juice!!\n";
-		this->_point_energy --;
-		this->_point_hit += amount;
-	}
-	else{
-
-		std::cout << "Do not have enough energy to repair!!!" << std::endl;
-	}
+	if (_hitPoints == 0)
+		std::cout << _name << BRIGHT_RED " is dead." RESET << std::endl;
 }
 
-void		ClapTrap::change_name(std::string new_name){
+void		ClapTrap::beRepaired(unsigned int amount)
+{
+	std::cout << BRIGHT_GREEN "ClapTrap " << _name << " is repaired by " << amount << " points." RESET << std::endl;
 
-	_name = new_name;
-}
-void		ClapTrap::change_hit(unsigned int	new_hit){
+	if (_hitPoints + amount > _maxHitPoints)
+		_hitPoints = _maxHitPoints;
+	else
+		_hitPoints += amount;
 
-	_point_hit = new_hit;
-}
-void		ClapTrap::change_energy(unsigned int new_energy){
-
-	_point_energy = new_energy;
-}
-void		ClapTrap::change_damage(unsigned int new_damage){
-
-	_attack_damage = new_damage;
+	if (_energyPoints + amount > _maxEnergyPoints)
+		_energyPoints = _maxEnergyPoints;
+	else
+		_energyPoints += amount;
 }

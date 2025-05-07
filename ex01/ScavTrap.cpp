@@ -3,82 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/14 23:16:21 by ismherna          #+#    #+#             */
-/*   Updated: 2024/09/14 23:16:22 by ismherna         ###   ########.fr       */
+/*   Created: 2024/08/07 16:34:56 by ismherna          #+#    #+#             */
+/*   Updated: 2025/05/07 16:54:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() :
+	ClapTrap("", 100, 50, 20)
 {
-	this->_name = "undefined";
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
-
-	std::cout << "ScavTrap: Empty constructor called" << std::endl;
+	std::cout << GREEN "ScavTrap default constructor called" RESET << std::endl;
 }
-
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) :
+	ClapTrap(name, 100, 50, 20)
 {
-	this->_name = name;
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
-
-	std::cout << "ScavTrap: Default constructor called" << std::endl;
-}
-
-ScavTrap::ScavTrap(const ScavTrap &ref)
-{
-	std::cout << "ScavTrap: Copy constructor called" << std::endl;
-	*this = ref;
-}
-
-ScavTrap &ScavTrap::operator=(const ScavTrap &ref)
-{
-	std::cout << "ScavTrap: Copy assignment operator called" << std::endl;
-	if (this != &ref)
-	{
-		_name = ref._name;
-		_hitPoints = ref._hitPoints;
-		_energyPoints = ref._energyPoints;
-		_attackDamage = ref._attackDamage;
-	}
-	return (*this);
+	std::cout << BLUE "ScavTrap param constructor called" RESET << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap: Destructor called" << std::endl;
+	std::cout << CYAN "ScavTrap destructor called" RESET << std::endl;
 }
 
-
-void	ScavTrap::attack(const std::string &target)
+ScavTrap::ScavTrap(ScavTrap const& cl)
 {
-	if (_energyPoints == 0)
-	{
-		std::cout	<< "ScavTrap " << _name
-					<< " cannot attack!"
-					<< std::endl;
-	}
-	else if (_energyPoints >= 1)
-	{
-		std::cout	<< "ScavTrap " << _name
-					<< " attacks " << target
-					<< ", causing " << _attackDamage
-					<< " points of damage!"
-					<< std::endl;
-		_energyPoints -= 1;
-	}
+	std::cout << MAGENTA "ScavTrap operator = called" RESET << std::endl;
+	operator=(cl);
 }
 
-void	ScavTrap::guardGate()
+void		ScavTrap::display(std::ostream& stream) const
 {
-	std::cout	<< "ScavTrap " << _name
-				<< " is now in Gate keeper mode."
-				<< std::endl;
+	stream << BRIGHT_GREEN "ScavTrap " << _name << " has " << _hitPoints << " hit points, " << _energyPoints << " energy points and " RESET << _attackDamage << " attack dammage.";
+}
+
+void 		ScavTrap::attack(std::string const& target)
+{
+	if (_energyPoints >= 5)
+	{
+		std::cout << BRIGHT_RED "ScavTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage! " RESET << std::endl;
+		_energyPoints -= 5;
+	}
+	else
+		std::cout << RED "Not enough enery points" RESET << std::endl;
+}
+
+void		ScavTrap::guardGate()
+{
+	std::cout << YELLOW "ScavTrap have enterred in Gate keeper mode." RESET << std::endl;
+}
+
+std::ostream&	operator<<(std::ostream& stream, ScavTrap const& cl)
+{
+	cl.display(stream);
+	return (stream);
 }
