@@ -13,20 +13,38 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-int	main()
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp" // Asegúrate de incluir FragTrap.hpp
+#include "DiamondTrap.hpp" // Asegúrate de incluir DiamondTrap.hpp
+
+int main()
 {
-	ClapTrap joe("Joe");
-	ClapTrap foe;
-	ScavTrap toe("Toe");
+    ClapTrap joe("Joe");
+    ClapTrap foe;
+    ScavTrap toe("Toe");
 
-	foe = ClapTrap("Foe");
+    foe = ClapTrap("Foe");
 
-	joe.attack("Foe");
-	foe.takeDamage(2);
+    joe.attack("Foe");
+    foe.takeDamage(2);
 
-	foe.beRepaired(10);
-	foe.attack("Toe");
-	
-	toe.takeDamage(2);
-	toe.guardGate();
+    foe.beRepaired(10);
+    foe.attack("Toe");
+    
+    toe.takeDamage(2);
+    toe.guardGate();
+
+    std::cout << "\n--- Testing DiamondTrap ---\n";
+    DiamondTrap diamondGuy("DiamondGuy");
+    
+    diamondGuy.attack("some_enemy");
+    diamondGuy.takeDamage(10);
+    diamondGuy.beRepaired(5);
+    diamondGuy.guardGate();
+    diamondGuy.highFivesGuys();
+    diamondGuy.whoAmI();
+
+    std::cout << "--- End of DiamondTrap Test ---\n";
+
+    return 0;
 }
