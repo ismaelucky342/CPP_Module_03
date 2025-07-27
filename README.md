@@ -3,34 +3,6 @@
 ## Overview
 This module introduces inheritance in C++ as part of a series on Object-Oriented Programming (OOP). The project imple### Exercise 03 - Now it'---
 
-### Exercise 03 - Now it's weird! 💎
-**Files**: `ex03/DiamondTrap.{cpp,hpp}` + all inherited classes
-
-Complex multiple inheritance implementing the "Diamond Problem" scenario.
-
-**Multiple Inheritance**: 
-```cpp
-class DiamondTrap : public FragTrap, public ScavTrap
-```
-
-**Private Attributes**:
-- `_name`: DiamondTrap's own name (different from ClapTrap::_name)
-- `ClapTrap::_name`: Set to `name + "_clap_name"`
-
-**Attribute Inheritance Strategy**:
-- `_hitPoints`: From FragTrap (100)
-- `_energyPoints`: From ScavTrap (50) 
-- `_attackDamage`: From FragTrap (30)
-- `attack()` method: From ScavTrap
-
-**New Methods**:
-- `void whoAmI()`: Displays both DiamondTrap name and ClapTrap name
-
-**Advanced Features**:
-- Resolves diamond inheritance ambiguity
-- Proper constructor chaining in multiple inheritance
-- Selective attribute and method inheritance
-- Demonstrates virtual inheritance concepts
 
 ## How to Test
 
