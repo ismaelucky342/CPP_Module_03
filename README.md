@@ -267,3 +267,4 @@ This exercise involves resolving ambiguity and understanding constructor chainin
 By completing these exercises, you gain practical experience with inheritance hierarchies and multiple inheritance, preparing you for advanced object-oriented programming concepts in C++. The progression from simple single inheritance to complex multiple inheritance scenarios provides a thorough understanding of C++ inheritance mechanisms.
 
 -Born2code
+![42madrid](https://github.com/ismaelucky342/Born2code/assets/153450550/3a377f34-9156-4eff-b04b-71c4b128523e)
