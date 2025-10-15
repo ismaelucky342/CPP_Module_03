@@ -1,3 +1,5 @@
+<img width="920" height="226" alt="imagen" src="https://github.com/user-attachments/assets/93997871-a73a-4303-bae6-47abc5acdcd5" />
+
 # C++ Module 03 – Inheritance
 
 ## Overview
